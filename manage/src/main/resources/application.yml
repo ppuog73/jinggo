@@ -1,0 +1,18 @@
+#server config
+server:
+  port: 8091
+  servlet:
+    context-path: /
+
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///jinggo_db?serverTimezone=GMT&useSSL=false&characterEncoding=utf-8
+    username: root
+    password: 123456
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
