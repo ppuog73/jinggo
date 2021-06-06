@@ -24,13 +24,13 @@ public class FileController {
         //1.获取上传文件的名称
         String fileName = fileImage.getOriginalFilename();
         //2.创建用户上传文件保存的路径
-        File dirFile = new File("E:\\Images for jinggou\\");
+        File dirFile = new File("E:\\Images\\jinggou\\");
         if (!dirFile.exists()){
             //创建多层目录
             dirFile.mkdirs();
         }
         //3.创建目标文件（要上传难道哪个文件上去）
-        String filePathName = "E:\\Images for jinggou\\"+fileName;
+        String filePathName = "E:\\Images\\jinggou\\"+fileName;
         File realFile = new File(filePathName);
         //4.准备上传文件
 

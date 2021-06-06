@@ -37,7 +37,7 @@ public class FileServiceImpl implements FileService {
     String urlDirPath ;
 
 
-/*    @Override
+    @Override
     public ImageVo uploadFile(MultipartFile uploadFile) {
 
 
@@ -85,23 +85,23 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
             return ImageVo.fail();
         }
-    }*/
+    }
 
-    /*
+   /* *//*
      *
      * url地址：localhost:8091/pic/upload?dir=image
      * 返回结果：
-     * */
+     * *//*
     @Override
     public ImageVo uploadFile(MultipartFile uploadFile){
-        /*
+        *//*
          * 1.获取图片
          *   1.1首先要确定用户上传的是不是图片，校验图片格式
          * 2.创建存储目录
          *   2.1创建目录方式：目录需要分级，方便检索  年/月/日  yyyy/mm//dd
          * 3.创建目标文件
          * 4.上传文件
-         * */
+         * *//*
 
         //1.1首先要确定用户上传的是不是图片，校验图片格式  .jpg
         String fileName = uploadFile.getOriginalFilename().toLowerCase();
@@ -143,9 +143,9 @@ public class FileServiceImpl implements FileService {
             uploadFile.transferTo(new File(realFilePath));
             System.out.println("success!");
 
-            //图片回显给页面
+            //图片回显给页面 http://image.jg.com/2021-05-24/uuid.jpg
             //虚拟路径
-            String url = urlDirPath+dateDir+realFileName+fileType;
+            String url = urlDirPath + dateDir+ realFileName+ fileType;
             ImageVo imageVo = new ImageVo(0,url,width,height);
             return imageVo;
         } catch (IOException e) {
@@ -154,6 +154,6 @@ public class FileServiceImpl implements FileService {
         }
         //return null;
     }
-
+*/
 
 }
