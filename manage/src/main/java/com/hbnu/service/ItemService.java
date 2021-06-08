@@ -3,7 +3,6 @@ package com.hbnu.service;
 import com.hbnu.pojo.Item;
 import com.hbnu.vo.EasyUITable;
 
-import java.util.List;
 
 public interface ItemService {
 

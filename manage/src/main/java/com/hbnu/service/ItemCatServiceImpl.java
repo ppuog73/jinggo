@@ -22,7 +22,7 @@ public class ItemCatServiceImpl implements ItemCatService {
         return itemCatMapper.selectById(itemCatId);
     }
 
-    /*
+    /**
     * pojo———转化—————vo
     *
     * 1.通过parentId查询数据库，查询出的是List<ItemCat>
@@ -49,8 +49,6 @@ public class ItemCatServiceImpl implements ItemCatService {
         }
         return treeList;
     }
-
-    //自动提取方法：ctrl+alt+m
 
     /**
      * 根据parentId查询数据库

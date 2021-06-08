@@ -1,13 +1,11 @@
 package com.hbnu.vo;
 
-import com.hbnu.pojo.Item;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
-/*
+/**
 * 后台拿到的数据转成json
 * */
 @Data
