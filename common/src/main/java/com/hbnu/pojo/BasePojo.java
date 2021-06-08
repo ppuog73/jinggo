@@ -15,6 +15,7 @@ public class BasePojo implements Serializable {
 
 
     private static final long serialVersionUID = 5466937469127555568L;
+    /**序列化ID，将对象的状态转化成字节流，在网络上传送*/
     private Date created;
     /**创建时间*/
     private Date updated;

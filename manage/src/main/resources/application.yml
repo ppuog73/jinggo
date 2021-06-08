@@ -1,7 +1,9 @@
 #server config
 server:
   port: 8091
+  #设定项目发布路径
   servlet:
+    # /代表缺省值目录
     context-path: /
 
 
