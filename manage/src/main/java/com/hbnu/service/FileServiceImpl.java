@@ -21,14 +21,16 @@ public class FileServiceImpl implements FileService {
 
          /* 1.获取图片
          *   1.1首先要确定用户上传的是不是图片，校验图片格式
+         *   校验文件是否为恶意程序
          * 2.创建存储目录
          *   2.1创建目录方式：目录需要分级，方便检索  年/月/日  yyyy/mm//dd
          * 3.创建目标文件
          * 4.上传文件
+         * 5.准备一个访问图片的虚拟路径
          * */
 
 
-    //2.创建图片存储根目录
+    //2.创建图片存储根目录，本地路径
     @Value("${image.localDirPath}")
     String localDirPath ;
 
@@ -52,30 +54,34 @@ public class FileServiceImpl implements FileService {
         try {
             //确认是图片后
             BufferedImage bufferedImage = ImageIO.read(uploadFile.getInputStream());
-            //拿到宽高并校验
+            //校验是否有图片的特有属性  高度/宽度
             int width = bufferedImage.getWidth();
             int height = bufferedImage.getHeight();
+            //校验宽度和高度是否有值
             if (width == 0 || height == 0) {
-                return ImageVo.fail();
+                return ImageVo.fail();//返回失败即可
             }
 
-            //2.1目录分级存储  按yyyy-mm-dd的格式创建
+            //2.1目录分级存储，提高用户检索图片的效率  利用工具API将时间转化为指定的格式，按yyyy-mm-dd的格式创建
             String dateDir = new SimpleDateFormat("yyyy-MM-dd/").format(new Date());
-            String realDir = localDirPath + dateDir;//目录分级之后的目录//把目录名称拼接
+            //2.2动态生成文件目录//目录分级之后的目录//把目录名称拼接=根目录+时间目录
+            String realDir = localDirPath + dateDir;//目录分级之后的目录//把目录名称拼接=根目录+时间目录
+            //2.3判断目录是否存在, 如果不存在则新建目录
             File realFileDir = new File(realDir);
             if (!realFileDir.exists()) {
-                realFileDir.mkdirs();
+                realFileDir.mkdirs();//如果不存在,则新建目录
             }
 
-            //3.创建存储图片的文件 为了上传的名字不重复用uuid.jpg
+            //3.创建存储图片的文件  防止文件重名,需要自定义文件名称 UUID
             String realFileName = UUID.randomUUID().toString();
             //最后一个点出来的时候截取
             String fileType = fileName.substring(fileName.lastIndexOf("."));
-            //真实文件路径
+            //实现路径拼接，图片存储的根目录  E:\Images\jinggou2021-06-08\2a41de60-8554-4ab6-ada0-3cb3247078cc.jpg
+            //拼接指定的虚拟路径
             String realFilePath = localDirPath + dateDir + realFileName + fileType;
 
 
-            //4.上传图片
+            //4.上传图片，new File(realFilePath)  封装文件真实对象
             uploadFile.transferTo(new File(realFilePath));
 
             //5.图片回显 http://image.jg.com/2021-05-24/uuid.jpg
@@ -86,7 +92,7 @@ public class FileServiceImpl implements FileService {
 
         } catch (IOException e) {
             e.printStackTrace();
-            return ImageVo.fail();
+            return ImageVo.fail();//告知文件上传失败
         }
     }
 }

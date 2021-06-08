@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice  /**处理controller层发送的异常*/
+@ControllerAdvice  /**处理controller层发送的异常，并且返回值JSON串*/
 @Slf4j  /**引入日志*/
 public class SystemException {
     @ExceptionHandler(RuntimeException.class)  /**运行时生效*/

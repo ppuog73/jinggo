@@ -50,6 +50,12 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
+    /**
+     * 实现图片上传操作.
+     * url地址:http://localhost:8091/pic/upload?dir=image
+     * 参数信息: uploadFile
+     * 返回值: ImageVo对象
+     */
     @RequestMapping("pic/upload")
     public ImageVo fileUpload(MultipartFile uploadFile) {
 
