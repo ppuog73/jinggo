@@ -17,6 +17,8 @@
           <element id="archive" name="common-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="common" />
           </element>
+          <element id="library" level="project" name="Maven: junit:junit:4.13.2" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:2.2" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.4.5" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.4.5" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.4.5" />
@@ -42,6 +44,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.6" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.6" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.6" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest:2.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.6" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.6" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.10" />
