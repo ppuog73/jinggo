@@ -67,18 +67,19 @@ public class FileServiceImpl implements FileService {
             //2.2动态生成文件目录//目录分级之后的目录//把目录名称拼接=根目录+时间目录
             String realDir = localDirPath + dateDir;//目录分级之后的目录//把目录名称拼接=根目录+时间目录
             //2.3判断目录是否存在, 如果不存在则新建目录
-            File realFileDir = new File(realDir);
-            if (!realFileDir.exists()) {
-                realFileDir.mkdirs();//如果不存在,则新建目录
+            File dirFile = new File(realDir);
+            if (!dirFile.exists()) {
+                dirFile.mkdirs();//如果不存在,则新建目录
             }
 
             //3.创建存储图片的文件  防止文件重名,需要自定义文件名称 UUID
-            String realFileName = UUID.randomUUID().toString();
-            //最后一个点出来的时候截取
+            String uuid = UUID.randomUUID().toString();
+            //最后一个点出来的时候截取，xxxx.jpg
             String fileType = fileName.substring(fileName.lastIndexOf("."));
-            //实现路径拼接，图片存储的根目录  E:\Images\jinggou2021-06-08\2a41de60-8554-4ab6-ada0-3cb3247078cc.jpg
+            //实现路径拼接，图片存储的根目录  E:\Images\jinggou2021-06-04\动态文件名称.jpg
+            String realFileName = uuid + fileType;
             //拼接指定的虚拟路径
-            String realFilePath = localDirPath + dateDir + realFileName + fileType;
+            String realFilePath = realDir + realFileName;
 
 
             //4.上传图片，new File(realFilePath)  封装文件真实对象
@@ -86,7 +87,7 @@ public class FileServiceImpl implements FileService {
 
             //5.图片回显 http://image.jg.com/2021-05-24/uuid.jpg
             //虚拟路径
-            String url = urlDirPath + dateDir + realFileName + fileType;
+            String url = urlDirPath + dateDir + realFileName;
             ImageVo imageVo = new ImageVo(0, url, width, height);
             return imageVo;
 
